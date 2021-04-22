@@ -6,7 +6,7 @@ Shop Bridge is a web application that helps track the different items for sale. 
 -Delete an item in inventory .\
 -Edit an item in inventory .\
 -Can view all items in inventory .\
--Pagination is supported .\
+-Pagination is supported
 
 # Getting Started with Create React App
 
