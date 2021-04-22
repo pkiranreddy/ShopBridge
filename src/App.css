@@ -24,8 +24,10 @@ body {
 .styled-input {
   border-radius: 5px;
   outline: none !important;
-  border: 0.5px solid gray;
+  border: 0.5px solid lightgray;
   padding: 2px;
+  padding-left: 4px;
+  padding-right: 3px;
   background-color: rgb(240, 240, 240);
 }
 .add-form {
@@ -45,6 +47,7 @@ body {
 .styled-card {
   background-color: rgb(232, 232, 232);
   width: 14rem;
+  border: 5px;
 }
 .styled-button {
   border-radius: 5px;
@@ -55,6 +58,7 @@ body {
   display: flex;
   justify-content: flex-start;
   flex-wrap: wrap;
+  padding-left: 20px;
 }
 @media only screen and (max-width: 800px) {
   .add-form {
