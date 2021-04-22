@@ -23,13 +23,19 @@ export const ModalEdit = ({ item, items, setItems }) => {
         Price: price
       })
     })
-      .then(res => res.json())
+      .then(res => {
+        if (!res.ok) {
+          throw new Error(`Request failed`);
+        }
+        return res.json();
+      })
       .then(data => {
         let index = items.findIndex(item => item.id === data.id);
         let newItems = [...items];
         newItems.splice(index, 1, data);
         setItems(newItems);
-      });
+      })
+      .catch(e => alert(e));
     toggle();
   };
 

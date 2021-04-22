@@ -19,12 +19,19 @@ function App() {
       },
       body: JSON.stringify({ name: name, Description: des, Price: price })
     })
-      .then(res => res.json())
+      .then(res => {
+        if (!res.ok) {
+          throw new Error(`Maximum limit reached`);
+        }
+        return res.json();
+      })
       .then(data => {
         let newItems = [data, ...items];
         setItems(newItems);
-      });
+      })
+      .catch(error => alert(error));
   };
+
   const handleDelete = id => {
     fetch(`https://607ef47f02a23c0017e8c72f.mockapi.io/api/shop/items/${id}`, {
       method: "DELETE",
@@ -32,21 +39,33 @@ function App() {
         "Content-Type": "application/json"
       }
     })
-      .then(res => res.json())
+      .then(res => {
+        if (!res.ok) {
+          throw new Error(`Request failed`);
+        }
+        return res.json();
+      })
       .then(data => {
         let index = items.findIndex(item => item.id === data.id);
         let newItems = [...items];
         newItems.splice(index, 1);
         setItems(newItems);
-      });
+      })
+      .catch(e => alert(e));
   };
 
   useEffect(() => {
     fetch("https://607ef47f02a23c0017e8c72f.mockapi.io/api/shop/items")
-      .then(res => res.json())
+      .then(res => {
+        if (!res.ok) {
+          throw new Error(`Request failed`);
+        }
+        return res.json();
+      })
       .then(data => {
         setItems(data);
-      });
+      })
+      .catch(e => alert(e));
   }, []);
 
   //Get Current Posts
